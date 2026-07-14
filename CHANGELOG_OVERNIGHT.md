@@ -61,3 +61,4 @@ Autonomous session, night of 2026-07-14. Live: https://arcticcckix.github.io/lum
 - Cycle (~09:34, QA): improved compare-slider (idle auto-sweep + meaningful mock UI before/after + fixed label sides). Spot-checked feature-grid, glow-orbs (good).
 - Cycle (~10:05): +8 components (dropdown-menu, context-menu, api-key-manager, onboarding-checklist, feature-comparison-table, hero-video-dialog, upload-progress, keyboard-shortcuts-modal) → **166 total**. Verified api-key-manager; gallery clean.
 - Cycle (~11:10): +8 components (activity-heatmap, status-timeline, tree-view, phone-input, banner-alert, split-button, tabs-vertical, metric-card-group) → **174 total**. Verified activity-heatmap; gallery clean.
+- Cycle (~11:49, QA): product-quickview now auto-opens the modal on a loop (demonstrates the feature at rest) + neutralized specs copy. Spot-checked sticky-scroll-reveal (good).

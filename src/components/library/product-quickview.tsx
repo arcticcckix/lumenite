@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Plus, Star, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,14 +15,14 @@ interface QuickProduct {
 
 const PRODUCT: QuickProduct = {
   id: "lumen-vial",
-  name: "Lumen Vial, 10ml",
+  name: "Lumen Bottle, 10ml",
   price: "$68.00",
   rating: 5,
   specs: [
-    { label: "Purity", value: "99.4%" },
-    { label: "Format", value: "Lyophilized" },
-    { label: "Storage", value: "-20°C" },
-    { label: "Testing", value: "Third-party HPLC" },
+    { label: "Volume", value: "10 ml" },
+    { label: "Material", value: "Borosilicate" },
+    { label: "Finish", value: "Frosted" },
+    { label: "Shipping", value: "Worldwide" },
   ],
 };
 
@@ -53,8 +53,34 @@ export function ProductQuickview({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const [dot, setDot] = useState(0);
   const [added, setAdded] = useState(false);
+  const [userTook, setUserTook] = useState(false);
+
+  // Auto-demonstrate the quick view on a loop until the user interacts.
+  useEffect(() => {
+    if (userTook) return;
+    let cancelled = false;
+    const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    (async () => {
+      while (!cancelled) {
+        await wait(1400);
+        if (cancelled) break;
+        setOpen(true);
+        await wait(1700);
+        if (cancelled) break;
+        setDot((d) => (d + 1) % 3);
+        await wait(1500);
+        if (cancelled) break;
+        setOpen(false);
+        await wait(1200);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [userTook]);
 
   function handleAdd() {
+    setUserTook(true);
     if (added) return;
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
@@ -64,7 +90,10 @@ export function ProductQuickview({ className }: { className?: string }) {
     <div className={cn("relative flex h-full w-full items-center justify-center", className)}>
       <motion.button
         layoutId={`card-${PRODUCT.id}`}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setUserTook(true);
+          setOpen(true);
+        }}
         className="w-48 rounded-2xl border border-line bg-panel p-3 text-left"
         whileHover={{ y: -4 }}
       >
@@ -85,7 +114,10 @@ export function ProductQuickview({ className }: { className?: string }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setUserTook(true);
+                setOpen(false);
+              }}
               className="absolute inset-0 z-10 bg-black/60 backdrop-blur-sm"
             />
             <motion.div
