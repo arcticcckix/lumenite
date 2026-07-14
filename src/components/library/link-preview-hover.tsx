@@ -142,12 +142,12 @@ export function LinkPreviewHover({
                   </span>
                   <ArrowUpRight className="ml-auto h-3.5 w-3.5 shrink-0 text-zinc-500" />
                 </div>
-                <p className="mt-2 text-[13px] font-semibold text-white">
+                <div className="mt-2 text-[13px] font-semibold text-white">
                   {previewTitle}
-                </p>
-                <p className="mt-1 text-[11px] leading-relaxed text-zinc-400">
+                </div>
+                <div className="mt-1 text-[11px] leading-relaxed text-zinc-400">
                   {previewDescription}
-                </p>
+                </div>
               </div>
             </motion.div>
           </motion.div>
