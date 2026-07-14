@@ -6,30 +6,30 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Templates",
   description:
-    "Full page templates assembled from Lumenite UI components — included with Pro.",
+    "Full page templates assembled from Lumenite UI components, included with Pro.",
 };
 
 const TEMPLATES = [
   {
-    name: "Nova — SaaS Landing",
+    name: "Nova: SaaS Landing",
     desc: "Aurora hero, live feature bento, animated testimonials, pricing and FAQ. The page this whole site's homepage is built from.",
     blocks: ["Aurora Background", "Bento Grid", "Infinite Moving Cards", "Pricing Cards", "FAQ Accordion"],
     gradient: "from-brand/40 via-glow/20 to-transparent",
   },
   {
-    name: "Pulse — Startup Hero Pack",
+    name: "Pulse: Startup Hero Pack",
     desc: "Five interchangeable hero sections: lamp, spotlight, parallax grid, typewriter and gradient variants, each with matching nav.",
     blocks: ["Lamp Hero", "Spotlight Hero", "Hero Parallax Grid", "Floating Navbar", "Typewriter"],
     gradient: "from-emerald-400/30 via-brand/20 to-transparent",
   },
   {
-    name: "Orbit — Portfolio",
+    name: "Orbit: Portfolio",
     desc: "A dark portfolio with dock navigation, tilt project cards, scramble-text headings and a timeline about section.",
     blocks: ["Dock Menu", "3D Tilt Card", "Scramble Text", "Timeline", "Following Pointer"],
     gradient: "from-amber-400/25 via-rose-500/15 to-transparent",
   },
   {
-    name: "Signal — Waitlist / Launch",
+    name: "Signal: Waitlist / Launch",
     desc: "Single-page launch site: shooting-star backdrop, number-ticker social proof, newsletter capture with success states.",
     blocks: ["Shooting Stars", "Number Ticker", "Newsletter Signup", "Shimmer Button", "Logo Marquee"],
     gradient: "from-glow/35 via-brand/20 to-transparent",
@@ -42,7 +42,7 @@ export default function TemplatesPage() {
       <div className="max-w-2xl">
         <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Templates</h1>
         <p className="mt-4 text-zinc-400">
-          Complete pages assembled from the library — copy the whole thing and
+          Complete pages assembled from the library, copy the whole thing and
           swap the copy. All templates are included with{" "}
           <Link href="/pricing" className="text-brand-soft hover:underline">Pro</Link>{" "}
           and downloadable from your dashboard.
@@ -96,7 +96,7 @@ export default function TemplatesPage() {
           All four templates. {SITE.pricing.pro.label}. Once.
         </h2>
         <p className="max-w-md text-sm text-zinc-400">
-          Included with Pro alongside every premium component — plus everything
+          Included with Pro alongside every premium component, plus everything
           we release in the future.
         </p>
         <a

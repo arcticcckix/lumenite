@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Copy, Infinity as InfinityIcon, Layers, Palette, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { REGISTRY, CATEGORIES } from "@/lib/registry";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -12,63 +12,59 @@ import { cn } from "@/lib/utils";
 export function Hero() {
   const free = REGISTRY.filter((e) => e.tier === "free").length;
   const total = REGISTRY.length;
+
+  const stats = [
+    { value: total, label: "Components" },
+    { value: CATEGORIES.length, label: "Categories" },
+    { value: free, label: "Free forever" },
+  ];
+
   return (
     <section className="relative overflow-hidden">
-      {/* backdrop */}
+      {/* backdrop: subtle grid with radial mask, one faint glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-[-20%] h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brand/20 blur-[160px]" />
-        <div className="absolute left-[15%] top-[30%] h-[300px] w-[300px] rounded-full bg-glow/10 blur-[120px]" />
+        <div className="absolute left-1/2 top-[-30%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-brand/10 blur-[180px]" />
         <div
-          className="absolute inset-0 opacity-[0.35]"
+          className="absolute inset-0 opacity-30"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
+              "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
             maskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+              "radial-gradient(ellipse 75% 55% at 50% 0%, black 35%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 75% 55% at 50% 0%, black 35%, transparent 100%)",
           }}
         />
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-6 pb-24 pt-28 text-center sm:pt-36">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto mb-7 flex w-fit items-center gap-2 rounded-full border border-line bg-panel/60 px-4 py-1.5 text-xs text-zinc-400 backdrop-blur"
-        >
-          <Sparkles className="h-3.5 w-3.5 text-brand-soft" />
-          {total}+ animated components · {free} free forever
-        </motion.div>
-
+      <div className="relative mx-auto max-w-5xl px-6 pb-24 pt-32 text-center sm:pt-40">
         <motion.h1
-          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          initial={{ opacity: 0, y: 18, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mx-auto max-w-4xl text-5xl font-semibold leading-[1.06] tracking-tight sm:text-7xl"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto max-w-4xl text-balance text-5xl font-semibold leading-[1.04] tracking-tight sm:text-7xl"
         >
-          Make your website look
-          <span className="block bg-gradient-to-r from-brand-soft via-white to-glow bg-clip-text text-transparent">
-            10x more expensive
-          </span>
+          Beautiful components.
+          <span className="block text-zinc-500">Copy, paste, ship.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400"
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-zinc-400"
         >
-          Copy-paste stunning React components built with Tailwind CSS and
-          Framer Motion. No install, no config, no design skills required —
-          just ship interfaces people screenshot.
+          A library of animated React components built with Tailwind CSS and
+          Framer Motion. Free to start, with a Pro tier that makes any interface
+          look considered and expensive.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-11 flex flex-wrap items-center justify-center gap-3"
         >
           <Link
             href="/components"
@@ -79,21 +75,25 @@ export function Hero() {
           </Link>
           <Link
             href="/pricing"
-            className="rounded-full border border-line bg-panel/60 px-7 py-3 text-sm text-zinc-300 backdrop-blur transition hover:border-zinc-600 hover:text-white"
+            className="rounded-full border border-line px-7 py-3 text-sm text-zinc-300 transition hover:border-zinc-600 hover:text-white"
           >
-            Get Pro — {SITE.pricing.pro.label} once
+            View pricing
           </Link>
         </motion.div>
 
+        {/* Apple-style spec row — no icons, no badges, thin dividers */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-8 flex items-center justify-center gap-6 text-xs text-zinc-600"
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mx-auto mt-16 flex max-w-md items-stretch justify-center divide-x divide-line rounded-2xl border border-line bg-surface/40 backdrop-blur"
         >
-          <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-emerald-500" /> MIT-licensed free tier</span>
-          <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-emerald-500" /> React 19 + Tailwind v4</span>
-          <span className="hidden items-center gap-1.5 sm:flex"><Check className="h-3.5 w-3.5 text-emerald-500" /> One-time payment</span>
+          {stats.map((s) => (
+            <div key={s.label} className="flex-1 px-6 py-5">
+              <div className="text-2xl font-semibold tracking-tight">{s.value}</div>
+              <div className="mt-1 text-xs text-zinc-500">{s.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
@@ -118,19 +118,19 @@ const WALL_SLUGS = [
 ];
 
 export function ComponentWall() {
-  const entries = WALL_SLUGS.map((s) => REGISTRY.find((e) => e.slug === s)).filter(
-    (e): e is NonNullable<typeof e> => !!e
-  );
+  const entries = WALL_SLUGS.map((s) =>
+    REGISTRY.find((e) => e.slug === s)
+  ).filter((e): e is NonNullable<typeof e> => !!e);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="mb-14 text-center">
+    <section className="mx-auto max-w-7xl px-6 py-28">
+      <div className="mb-16 text-center">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-          Everything is <span className="text-brand-soft">live</span>. Hover around.
+          Everything here is live.
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-zinc-400">
-          These aren&apos;t screenshots — every card below is the real component
-          running in your browser. Click any of them to grab the code.
+        <p className="mx-auto mt-4 max-w-lg text-zinc-400">
+          These aren&apos;t screenshots. Every card is the real component,
+          running right here in your browser. Click one to take the code.
         </p>
       </div>
 
@@ -158,8 +158,10 @@ export function ComponentWall() {
                   )}
                 </div>
                 <div className="mt-3 flex items-center justify-between px-1">
-                  <span className="text-sm font-medium text-zinc-200">{entry.name}</span>
-                  <span className="text-xs text-zinc-600 transition group-hover:text-brand-soft">
+                  <span className="text-sm font-medium text-zinc-200">
+                    {entry.name}
+                  </span>
+                  <span className="text-xs text-zinc-600 transition group-hover:text-white">
                     View code →
                   </span>
                 </div>
@@ -169,80 +171,69 @@ export function ComponentWall() {
         })}
       </div>
 
-      <div className="mt-12 text-center">
+      <div className="mt-14 text-center">
         <Link
           href="/components"
           className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-2.5 text-sm text-zinc-300 transition hover:border-zinc-600 hover:text-white"
         >
-          See all {REGISTRY.length} components <ArrowRight className="h-4 w-4" />
+          See all {REGISTRY.length} components{" "}
+          <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </section>
   );
 }
 
-/* ---------------- How it works / features ---------------- */
+/* ---------------- Features ---------------- */
 
 const FEATURES = [
-  { icon: Copy, title: "Copy. Paste. Done.", body: "No package to install, no CLI, no config. Open a component, copy the source, drop it in your project. It just works." },
-  { icon: Zap, title: "Framer Motion powered", body: "Springs, layout animations, scroll effects — every interaction is buttery 60fps, tuned by hand." },
-  { icon: Palette, title: "Tailwind-native", body: "Pure Tailwind classes. Restyle anything by editing classNames — no CSS files, no theme lock-in." },
-  { icon: Layers, title: `${CATEGORIES.length} categories`, body: "Heroes, cards, backgrounds, text effects, navigation, forms, testimonials — a full design system of wow." },
-  { icon: ShieldCheck, title: "TypeScript strict", body: "Every component ships fully typed with zero `any`. Autocomplete everything." },
-  { icon: InfinityIcon, title: "Lifetime updates", body: "Pro is a one-time payment. Every new component and template we ever add is yours, forever." },
+  {
+    title: "Copy, paste, done",
+    body: "No package to install, no CLI, no config. Open a component, copy the source, drop it into your project. It just works.",
+  },
+  {
+    title: "Framer Motion inside",
+    body: "Springs, layout animations, scroll effects. Every interaction runs at 60fps and was tuned by hand.",
+  },
+  {
+    title: "Tailwind native",
+    body: "Pure Tailwind classes. Restyle anything by editing classNames. No CSS files, no theme lock-in.",
+  },
+  {
+    title: `${CATEGORIES.length} categories`,
+    body: "Heroes, cards, backgrounds, text, navigation, commerce, forms. A full system, not a grab bag.",
+  },
+  {
+    title: "TypeScript strict",
+    body: "Every component ships fully typed, with zero use of any. Autocomplete everything.",
+  },
+  {
+    title: "One payment, forever",
+    body: "Pro is a single price with no subscription. Every component and template we add later is already yours.",
+  },
 ];
 
 export function Features() {
   return (
-    <section className="border-t border-line bg-surface/50">
-      <div className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-14 max-w-2xl">
+    <section className="border-t border-line bg-surface/40">
+      <div className="mx-auto max-w-7xl px-6 py-28">
+        <div className="mb-16 max-w-2xl">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Built for developers who&apos;d rather ship than fiddle
+            Made to drop straight into your stack.
           </h2>
         </div>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
-            <div key={f.title} className="group bg-surface p-8 transition hover:bg-panel">
-              <f.icon className="h-5 w-5 text-brand-soft transition group-hover:scale-110" />
-              <h3 className="mt-4 font-medium text-white">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-500">{f.body}</p>
+            <div
+              key={f.title}
+              className="bg-surface p-8 transition hover:bg-panel"
+            >
+              <h3 className="font-medium text-white">{f.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+                {f.body}
+              </p>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- Pricing teaser ---------------- */
-
-export function PricingTeaser() {
-  return (
-    <section className="relative overflow-hidden">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-[140px]" />
-      <div className="relative mx-auto max-w-4xl px-6 py-28 text-center">
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-          Half the price of the alternatives.
-          <span className="block text-zinc-500">None of the subscription.</span>
-        </h2>
-        <p className="mx-auto mt-5 max-w-xl text-zinc-400">
-          {SITE.pricing.pro.label} once. Every Pro component, every template,
-          every future release. Compare that to $199+ elsewhere.
-        </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/pricing"
-            className="rounded-full bg-gradient-to-r from-brand to-glow px-8 py-3 text-sm font-medium text-white shadow-[0_0_40px_rgba(124,108,255,0.4)] transition hover:shadow-[0_0_60px_rgba(124,108,255,0.6)]"
-          >
-            See pricing
-          </Link>
-          <Link
-            href="/components"
-            className="rounded-full border border-line px-8 py-3 text-sm text-zinc-300 transition hover:text-white"
-          >
-            Start free
-          </Link>
         </div>
       </div>
     </section>
@@ -253,40 +244,42 @@ export function PricingTeaser() {
 
 export function AuditTeaser() {
   return (
-    <section className="border-t border-line bg-surface/50">
-      <div className="mx-auto max-w-5xl px-6 py-24">
+    <section className="border-t border-line">
+      <div className="mx-auto max-w-5xl px-6 py-28">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <div className="mb-4 flex w-fit items-center gap-2 rounded-full border border-line bg-panel/60 px-3 py-1 text-xs text-brand-soft">
-              <Sparkles className="h-3.5 w-3.5" /> New · AI Site Audit
-            </div>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Not sure where to start? Let our AI look at your site.
+              Not sure where to start? Point us at your site.
             </h2>
-            <p className="mt-4 text-zinc-400">
-              Paste your URL and Lumenite scans every section — hero, nav,
-              testimonials, pricing — scores your design, and hands you the exact
-              components to upgrade each one. Free, no signup.
+            <p className="mt-5 text-zinc-400">
+              Paste your URL. Lumenite scans every section of your page, scores
+              the design, and shows the exact components to upgrade each one.
+              Free, and no signup.
             </p>
             <Link
               href="/audit"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-zinc-200"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-zinc-200"
             >
-              Audit my site free <ArrowRight className="h-4 w-4" />
+              Audit my site
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="rounded-2xl border border-line bg-void p-6">
-            <div className="flex items-center gap-3">
+          <div className="rounded-2xl border border-line bg-surface p-6">
+            <div className="flex items-center gap-4">
               <div className="relative h-16 w-16 shrink-0">
                 <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
                   <circle cx="60" cy="60" r="52" fill="none" stroke="#1c1c28" strokeWidth="12" />
                   <circle cx="60" cy="60" r="52" fill="none" stroke="#a99dff" strokeWidth="12" strokeLinecap="round" strokeDasharray={2 * Math.PI * 52} strokeDashoffset={2 * Math.PI * 52 * 0.38} />
                 </svg>
-                <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">62</div>
+                <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">
+                  62
+                </div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Design score</div>
-                <div className="text-sm text-zinc-300">6 quick wins found</div>
+                <div className="text-xs uppercase tracking-wide text-zinc-500">
+                  Design score
+                </div>
+                <div className="text-sm text-zinc-300">6 upgrades found</div>
               </div>
             </div>
             <div className="mt-5 space-y-2">
@@ -296,12 +289,19 @@ export function AuditTeaser() {
                 { l: "Navigation", ok: true },
                 { l: "Pricing", ok: true },
               ].map((r) => (
-                <div key={r.l} className="flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-sm">
+                <div
+                  key={r.l}
+                  className="flex items-center gap-2 rounded-lg border border-line bg-void px-3 py-2 text-sm"
+                >
                   <span className={r.ok ? "text-emerald-400" : "text-amber-400"}>
                     {r.ok ? <Check className="h-3.5 w-3.5" /> : "!"}
                   </span>
                   <span className="text-zinc-300">{r.l}</span>
-                  {!r.ok && <span className="ml-auto text-xs text-brand-soft">upgrade →</span>}
+                  {!r.ok && (
+                    <span className="ml-auto text-xs text-brand-soft">
+                      upgrade →
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
@@ -312,21 +312,73 @@ export function AuditTeaser() {
   );
 }
 
+/* ---------------- Pricing teaser ---------------- */
+
+export function PricingTeaser() {
+  return (
+    <section className="border-t border-line bg-surface/40">
+      <div className="relative mx-auto max-w-4xl px-6 py-28 text-center">
+        <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
+          Half the price of the alternatives.
+          <span className="block text-zinc-500">None of the subscription.</span>
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-zinc-400">
+          {SITE.pricing.pro.label} once. Every Pro component, every template,
+          and every future release, for good. Comparable libraries start at
+          $199 and keep charging.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/pricing"
+            className="rounded-full bg-white px-8 py-3 text-sm font-medium text-black transition hover:bg-zinc-200"
+          >
+            View pricing
+          </Link>
+          <Link
+            href="/components"
+            className="rounded-full border border-line px-8 py-3 text-sm text-zinc-300 transition hover:border-zinc-600 hover:text-white"
+          >
+            Start free
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- FAQ ---------------- */
 
 const FAQS = [
-  { q: "Is it really free?", a: "Yes — the free tier is MIT-style licensed. Use those components in personal, client, and commercial projects with no attribution. Pro unlocks the premium components, full templates, and lifetime updates." },
-  { q: "What do I need to use it?", a: "A React project with Tailwind CSS and framer-motion installed. Next.js is the happy path, but anything that renders React works. Copy the code, paste it in, done." },
-  { q: "How does Pro access work?", a: "Checkout happens through Whop. You get a license key instantly; enter it once in your Dashboard and every Pro component's source unlocks in your browser." },
-  { q: "Is it a subscription?", a: "No. One payment, lifetime access, lifetime updates. We hate subscription fatigue as much as you do." },
-  { q: "Can I use these in client work?", a: "Absolutely — unlimited projects, commercial included. The only thing you can't do is resell or redistribute the components themselves as a library." },
-  { q: "What about refunds?", a: "7-day no-questions refund policy, handled through Whop. See the refund policy for details." },
+  {
+    q: "Is it really free?",
+    a: "Yes. The free tier is MIT-style licensed, so you can use those components in personal, client, and commercial projects with no attribution. Pro unlocks the premium components, full templates, and lifetime updates.",
+  },
+  {
+    q: "What do I need to use it?",
+    a: "A React project with Tailwind CSS and framer-motion installed. Next.js is the happy path, but anything that renders React works. Copy the code, paste it in, and you are done.",
+  },
+  {
+    q: "How does Pro access work?",
+    a: "Checkout happens through Whop. You get a license key instantly, enter it once in your Dashboard, and every Pro component's source unlocks in your browser.",
+  },
+  {
+    q: "Is it a subscription?",
+    a: "No. One payment gets you lifetime access and lifetime updates. We dislike subscription fatigue as much as you do.",
+  },
+  {
+    q: "Can I use these in client work?",
+    a: "Yes, on unlimited projects, commercial included. The only thing you cannot do is resell or redistribute the components themselves as a competing library.",
+  },
+  {
+    q: "What about refunds?",
+    a: "There is a 7-day, no-questions refund policy handled through Whop. See the refund policy for the details.",
+  },
 ];
 
 export function FAQ() {
   return (
     <section className="border-t border-line">
-      <div className="mx-auto max-w-3xl px-6 py-24">
+      <div className="mx-auto max-w-3xl px-6 py-28">
         <h2 className="text-center text-3xl font-semibold tracking-tight">
           Questions, answered
         </h2>
@@ -345,7 +397,13 @@ function FAQItem({ q, a }: { q: string; a: string }) {
     <details className="group rounded-xl border border-line bg-surface open:bg-panel">
       <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-4 text-sm font-medium text-zinc-200 [&::-webkit-details-marker]:hidden">
         {q}
-        <span className={cn("text-zinc-500 transition-transform group-open:rotate-45")}>+</span>
+        <span
+          className={cn(
+            "text-zinc-500 transition-transform group-open:rotate-45"
+          )}
+        >
+          +
+        </span>
       </summary>
       <p className="px-6 pb-5 text-sm leading-relaxed text-zinc-400">{a}</p>
     </details>

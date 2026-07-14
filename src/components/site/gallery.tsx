@@ -39,7 +39,7 @@ export function Gallery() {
         </h1>
         <p className="mt-4 text-zinc-400">
           {REGISTRY.length} live, copy-paste React components. Free ones are
-          yours forever — Pro ones unlock with a license.
+          yours forever, Pro ones unlock with a license.
         </p>
       </div>
 
@@ -119,7 +119,7 @@ export function Gallery() {
 
       {entries.length === 0 && (
         <p className="py-24 text-center text-sm text-zinc-500">
-          Nothing matches — try a different search.
+          Nothing matches, try a different search.
         </p>
       )}
     </div>

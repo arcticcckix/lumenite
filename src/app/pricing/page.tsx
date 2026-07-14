@@ -7,7 +7,7 @@ import { REGISTRY } from "@/lib/registry";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Free components forever. Pro is a one-time payment — every premium component, every template, lifetime updates.",
+    "Free components forever. Pro is a one-time payment, every premium component, every template, lifetime updates.",
 };
 
 const free = () => REGISTRY.filter((e) => e.tier === "free").length;
@@ -39,7 +39,7 @@ export default function PricingPage() {
       highlight: true,
       features: [
         { ok: true, label: "Everything in Free" },
-        { ok: true, label: `All ${pro()} Pro components — full source` },
+        { ok: true, label: `All ${pro()} Pro components, full source` },
         { ok: true, label: "Premium page templates" },
         { ok: true, label: "Every future component & template" },
         { ok: true, label: "Unlimited personal & client projects" },
@@ -70,8 +70,8 @@ export default function PricingPage() {
           Simple pricing. No subscription.
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-zinc-400">
-          Pay once, own it forever. Cheaper than every comparable library —
-          and the free tier is genuinely useful, not a teaser.
+          Pay once, own it forever. Cheaper than every comparable library, and
+          the free tier is genuinely useful, not a teaser.
         </p>
       </div>
 
@@ -136,7 +136,7 @@ export default function PricingPage() {
 
       <div className="mx-auto mt-16 max-w-2xl rounded-xl border border-line bg-surface p-6 text-center text-sm text-zinc-400">
         Payments are processed by{" "}
-        <span className="text-zinc-200">Whop</span> (merchant of record — they
+        <span className="text-zinc-200">Whop</span> (merchant of record, they
         handle checkout, receipts and taxes). After purchase your license key
         arrives instantly; activate it in the{" "}
         <Link href="/dashboard" className="text-brand-soft hover:underline">

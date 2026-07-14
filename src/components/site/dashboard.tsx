@@ -123,7 +123,7 @@ function Activation({
         </p>
         {IS_STATIC_DEMO && (
           <p className="mt-3 border-t border-line pt-3 text-xs text-zinc-500">
-            This public showcase runs in demo mode — use{" "}
+            This public showcase runs in demo mode, use{" "}
             <code className="rounded bg-panel px-1.5 py-0.5 font-mono text-brand-soft">DEMO-2026</code>{" "}
             to preview the Pro dashboard.
           </p>
@@ -161,7 +161,7 @@ function ProDashboard({
             </span>
           </div>
           <p className="mt-2 text-sm text-zinc-500">
-            License <code className="font-mono text-zinc-400">{masked}</code> — unlocked on this browser.
+            License <code className="font-mono text-zinc-400">{masked}</code>, unlocked on this browser.
           </p>
         </div>
         <button
@@ -211,7 +211,7 @@ function ProDashboard({
       {/* templates */}
       <h2 className="mt-14 text-lg font-medium">Templates</h2>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        {["Nova — SaaS Landing", "Pulse — Startup Hero Pack", "Orbit — Portfolio", "Signal — Waitlist / Launch"].map((t) => (
+        {["Nova: SaaS Landing", "Pulse: Startup Hero Pack", "Orbit: Portfolio", "Signal: Waitlist / Launch"].map((t) => (
           <div key={t} className="flex items-center justify-between rounded-xl border border-line bg-surface px-5 py-4">
             <span className="text-sm text-zinc-200">{t}</span>
             <a
@@ -227,7 +227,7 @@ function ProDashboard({
         ))}
       </div>
       <p className="mt-3 text-xs text-zinc-600">
-        Template source bundles are delivered via your Whop purchase — the
+        Template source bundles are delivered via your Whop purchase, the
         &ldquo;Get files&rdquo; button opens your access page.
       </p>
     </motion.div>

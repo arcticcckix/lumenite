@@ -9,7 +9,6 @@ import {
   Lock,
   LoaderCircle,
   Search,
-  Sparkles,
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -60,16 +59,13 @@ export function AuditTool() {
     <div className="mx-auto max-w-5xl px-6 py-16">
       {/* header */}
       <div className="mx-auto max-w-2xl text-center">
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-line bg-panel/60 px-4 py-1.5 text-xs text-zinc-400">
-          <Sparkles className="h-3.5 w-3.5 text-brand-soft" /> Free · no signup
-        </div>
         <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Is your site leaving money on the table?
+          See what your site could look like.
         </h1>
-        <p className="mt-4 text-zinc-400">
-          Paste your URL. Our AI scans your page, scores your design, and shows
-          the exact Lumenite components that would make each section convert
-          harder.
+        <p className="mx-auto mt-5 max-w-lg text-zinc-400">
+          Paste your URL. We scan your page, score the design, and show the
+          exact Lumenite components that would make each section stronger. Free,
+          and no signup.
         </p>
       </div>
 
@@ -296,16 +292,16 @@ function Report({ report, demo }: { report: AuditReport; demo: boolean }) {
           Unlock every fix in this report
         </h3>
         <p className="mx-auto mt-3 max-w-md text-sm text-zinc-400">
-          Get {report.recommendedSlugs.length}+ recommended components — including
-          all the Pro ones above — for {SITE.pricing.pro.label} once. Copy, paste,
-          and your site looks like this report by tonight.
+          Get {report.recommendedSlugs.length}+ recommended components, including
+          all the Pro ones above, for {SITE.pricing.pro.label} once. Copy, paste,
+          and your site can look like this report by tonight.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link
             href="/pricing"
             className="flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition hover:bg-zinc-200"
           >
-            Get Pro — {SITE.pricing.pro.label} <ArrowRight className="h-4 w-4" />
+            Get Pro, {SITE.pricing.pro.label} <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/components"
@@ -321,7 +317,7 @@ function Report({ report, demo }: { report: AuditReport; demo: boolean }) {
 
 function HowItWorks() {
   const steps = [
-    { n: "1", t: "Paste your URL", d: "Any public website — your landing page, store, or portfolio." },
+    { n: "1", t: "Paste your URL", d: "Any public website: your landing page, store, or portfolio." },
     { n: "2", t: "AI scans every section", d: "We detect your hero, nav, testimonials, pricing, CTA and more." },
     { n: "3", t: "Get your upgrade plan", d: "See the exact components to copy-paste, with live previews." },
   ];
