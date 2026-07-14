@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  ArrowRight,
   BadgeCheck,
   Crown,
   Download,
@@ -11,11 +12,22 @@ import {
   Layers,
   LoaderCircle,
   LogOut,
+  MousePointerClick,
+  Copy,
   Sparkles,
 } from "lucide-react";
 import { useLicense } from "@/lib/license";
-import { REGISTRY } from "@/lib/registry";
+import { REGISTRY, bySlug } from "@/lib/registry";
 import { SITE } from "@/lib/site";
+
+const FRESH_SLUGS = [
+  "command-palette",
+  "comet-card",
+  "liquid-glass-card",
+  "background-gradient-animation",
+  "world-map",
+  "3d-pin",
+];
 
 const IS_STATIC_DEMO = process.env.NEXT_PUBLIC_STATIC_DEMO === "1";
 
@@ -185,6 +197,64 @@ function ProDashboard({
             <div className="mt-1 text-xs text-zinc-500">{s.label}</div>
           </div>
         ))}
+      </div>
+
+      {/* quick start */}
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        {[
+          { icon: MousePointerClick, step: "1", title: "Browse", body: "Open any component and hit Preview to see it live." },
+          { icon: Copy, step: "2", title: "Copy", body: "Switch to the Code tab and copy the full source." },
+          { icon: Sparkles, step: "3", title: "Ship", body: "Paste it into your project. It just works." },
+        ].map((s) => (
+          <div key={s.step} className="rounded-2xl border border-line bg-surface p-5">
+            <div className="flex items-center gap-2 text-brand-soft">
+              <s.icon className="h-4 w-4" />
+              <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-500">
+                Step {s.step}
+              </span>
+            </div>
+            <div className="mt-3 text-sm font-medium text-white">{s.title}</div>
+            <p className="mt-1 text-xs leading-relaxed text-zinc-500">{s.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* fresh drops */}
+      <div className="mt-14 flex items-end justify-between">
+        <div>
+          <h2 className="text-lg font-medium">Fresh from the library</h2>
+          <p className="mt-1 text-sm text-zinc-500">
+            The newest additions, unlocked and ready to copy.
+          </p>
+        </div>
+        <Link
+          href="/components"
+          className="hidden items-center gap-1.5 text-sm text-zinc-400 transition hover:text-white sm:flex"
+        >
+          Browse all <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {FRESH_SLUGS.map((slug) => {
+          const e = bySlug(slug);
+          if (!e) return null;
+          const Demo = e.component;
+          return (
+            <Link key={slug} href={`/components/${slug}`} className="group block">
+              <div className="relative h-40 overflow-hidden rounded-2xl border border-line bg-void transition group-hover:border-zinc-600">
+                <div className="absolute inset-0 origin-center scale-[0.6]">
+                  <Demo />
+                </div>
+              </div>
+              <div className="mt-2.5 flex items-center justify-between px-1">
+                <span className="text-sm font-medium text-zinc-200">{e.name}</span>
+                <span className="text-[11px] uppercase tracking-wide text-zinc-600">
+                  {e.category}
+                </span>
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
       {/* pro components */}
