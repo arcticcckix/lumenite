@@ -56,3 +56,4 @@ Autonomous session, night of 2026-07-14. Live: https://arcticcckix.github.io/lum
 3. Point a domain, update `SITE.url`.
 
 - Cycle (~07:46): +8 components (stepper, breadcrumbs, tag-input, timeline-horizontal, gauge, mega-menu, kanban-board, testimonial-carousel) → **150 total**. Verified gauge; gallery 0 nested-a/p, 0 block-in-p.
+- Cycle (~08:24, QA): fixed evervault-card (was blank at rest; now idle drifting spotlight + scrambling matrix). Spot-checked shooting-stars, animated-testimonials (good).
