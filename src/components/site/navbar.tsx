@@ -40,10 +40,14 @@ export function Navbar() {
           }}
         />
 
-        <Link href="/" className="relative flex shrink-0 items-center gap-2.5">
+        <Link
+          href="/"
+          className="group relative flex shrink-0 items-center gap-2.5"
+        >
           <LumeniteMark
             size={28}
-            className="drop-shadow-[0_0_12px_rgba(124,108,255,0.45)]"
+            spin
+            className="drop-shadow-[0_0_12px_rgba(124,108,255,0.45)] transition-[filter] group-hover:[animation-duration:1.6s] group-hover:drop-shadow-[0_0_16px_rgba(124,108,255,0.7)]"
           />
           <span className="text-[15px] font-semibold tracking-tight">
             {SITE.shortName}

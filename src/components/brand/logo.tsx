@@ -8,10 +8,13 @@ import { cn } from "@/lib/utils";
 export function LumeniteMark({
   size = 32,
   variant = "gradient",
+  spin = false,
   className,
 }: {
   size?: number;
   variant?: "gradient" | "white" | "black";
+  /** slowly rotate the mark like a spinning star */
+  spin?: boolean;
   className?: string;
 }) {
   const id = useId();
@@ -28,7 +31,10 @@ export function LumeniteMark({
       height={size}
       viewBox="0 0 100 100"
       fill="none"
-      className={className}
+      className={cn(
+        spin && "motion-safe:animate-spin-slow [transform-origin:50%_50%]",
+        className
+      )}
       aria-hidden
     >
       {variant === "gradient" && (

@@ -15,6 +15,7 @@
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
   --animate-aurora: aurora 60s linear infinite;
+  --animate-spin-slow: spin 9s linear infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
