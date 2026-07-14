@@ -58,3 +58,4 @@ Autonomous session, night of 2026-07-14. Live: https://arcticcckix.github.io/lum
 - Cycle (~07:46): +8 components (stepper, breadcrumbs, tag-input, timeline-horizontal, gauge, mega-menu, kanban-board, testimonial-carousel) → **150 total**. Verified gauge; gallery 0 nested-a/p, 0 block-in-p.
 - Cycle (~08:24, QA): fixed evervault-card (was blank at rest; now idle drifting spotlight + scrambling matrix). Spot-checked shooting-stars, animated-testimonials (good).
 - Cycle (~08:54): +8 components (marquee-vertical, color-picker, empty-state, pagination, faq-search, sidebar-nav, progress-ring-group, chat-thread) → **158 total**. Verified sidebar-nav; gallery clean.
+- Cycle (~09:34, QA): improved compare-slider (idle auto-sweep + meaningful mock UI before/after + fixed label sides). Spot-checked feature-grid, glow-orbs (good).

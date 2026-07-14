@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { GripVertical } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,6 +22,17 @@ export function CompareSlider({
   const [dragging, setDragging] = useState(false);
   const x = useMotionValue(50);
   const clipPath = useTransform(x, (v) => `inset(0 0 0 ${v}%)`);
+
+  // Idle auto-sweep so the comparison is visible without dragging.
+  useEffect(() => {
+    if (dragging) return;
+    let t = 0;
+    const id = setInterval(() => {
+      t += 1;
+      x.set(Math.round((50 + 24 * Math.sin(t * 0.045)) * 100) / 100);
+    }, 40);
+    return () => clearInterval(id);
+  }, [dragging, x]);
 
   function updateFromClientX(clientX: number) {
     const rect = ref.current?.getBoundingClientRect();
@@ -45,16 +56,16 @@ export function CompareSlider({
       }}
       onTouchEnd={() => setDragging(false)}
     >
-      {/* After (base layer) */}
+      {/* After (base layer, shows on the left of the divider) */}
       <div className="absolute inset-0">{after}</div>
-      <span className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
+      <span className="absolute left-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
         {afterLabel}
       </span>
 
-      {/* Before (clipped layer) */}
+      {/* Before (clipped layer, shows on the right of the divider) */}
       <motion.div className="absolute inset-0" style={{ clipPath }}>
         {before}
-        <span className="absolute left-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
+        <span className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
           {beforeLabel}
         </span>
       </motion.div>
@@ -77,21 +88,53 @@ export function CompareSlider({
   );
 }
 
-function Panel({
-  gradient,
-  label,
-}: {
-  gradient: string;
-  label: string;
-}) {
+/** A tiny mock UI that reads as flat/plain (before) or vivid/polished (after). */
+function MockUi({ enhanced }: { enhanced: boolean }) {
   return (
     <div
-      className="flex h-full w-full items-center justify-center"
-      style={{ background: gradient }}
+      className="relative flex h-full w-full flex-col justify-center gap-3 overflow-hidden p-7"
+      style={{
+        background: enhanced
+          ? "linear-gradient(135deg, #241f47, #143152)"
+          : "#141419",
+      }}
     >
-      <span className="text-sm font-semibold tracking-wide text-white/80">
-        {label}
-      </span>
+      {enhanced && (
+        <>
+          <div className="absolute -left-8 -top-6 h-36 w-36 rounded-full bg-brand/40 blur-3xl" />
+          <div className="absolute -bottom-8 right-0 h-32 w-32 rounded-full bg-glow/30 blur-3xl" />
+        </>
+      )}
+      <div
+        className={cn(
+          "relative h-3.5 w-3/4 rounded-full",
+          enhanced ? "bg-gradient-to-r from-brand-soft to-glow" : "bg-white/20"
+        )}
+      />
+      <div
+        className={cn(
+          "relative h-2 w-1/2 rounded-full",
+          enhanced ? "bg-white/45" : "bg-white/12"
+        )}
+      />
+      <div className="relative mt-3 flex gap-2.5">
+        <div
+          className={cn(
+            "h-9 w-24 rounded-lg",
+            enhanced
+              ? "bg-brand shadow-[0_0_22px_rgba(124,108,255,0.6)]"
+              : "bg-white/10"
+          )}
+        />
+        <div
+          className={cn(
+            "h-9 w-16 rounded-lg border",
+            enhanced
+              ? "border-white/20 bg-white/10"
+              : "border-white/10 bg-transparent"
+          )}
+        />
+      </div>
     </div>
   );
 }
@@ -101,13 +144,10 @@ export default function Demo() {
     <div className="flex h-full w-full items-center justify-center bg-[#050508] p-6">
       <CompareSlider
         className="max-w-md"
-        before={<Panel gradient="linear-gradient(135deg, #1a1a24, #3a3a4a)" label="Original" />}
-        after={
-          <Panel
-            gradient="linear-gradient(135deg, #7c6cff, #5b8cff)"
-            label="Enhanced"
-          />
-        }
+        beforeLabel="Original"
+        afterLabel="Enhanced"
+        before={<MockUi enhanced={false} />}
+        after={<MockUi enhanced />}
       />
     </div>
   );
