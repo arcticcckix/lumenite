@@ -12,7 +12,9 @@ export type Category =
   | "grids"
   | "effects"
   | "forms"
-  | "testimonials";
+  | "testimonials"
+  | "commerce"
+  | "sections";
 
 export interface RegistryEntry {
   /** URL slug, kebab-case, unique */

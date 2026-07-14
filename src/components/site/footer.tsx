@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { LumeniteMark } from "@/components/brand/logo";
 
 const COLS: { title: string; links: { href: string; label: string }[] }[] = [
   {
@@ -34,9 +35,12 @@ export function Footer() {
     <footer className="border-t border-line bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="text-lg font-semibold tracking-tight">
-            {SITE.shortName}
-            <span className="text-brand-soft"> UI</span>
+          <div className="flex items-center gap-2.5">
+            <LumeniteMark size={28} />
+            <div className="text-lg font-semibold tracking-tight">
+              {SITE.shortName}
+              <span className="text-brand-soft"> UI</span>
+            </div>
           </div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-zinc-500">
             {SITE.tagline}

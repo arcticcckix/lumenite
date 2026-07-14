@@ -6,6 +6,8 @@ import { textEntries } from "./text";
 import { buttonsEntries } from "./buttons";
 import { heroesEntries } from "./heroes";
 import { gridsEntries } from "./grids";
+import { commerceEntries } from "./commerce";
+import { sectionsEntries } from "./sections";
 
 const baseEntries: RegistryEntry[] = [
   {
@@ -27,6 +29,8 @@ export const REGISTRY: RegistryEntry[] = [
   ...buttonsEntries,
   ...heroesEntries,
   ...gridsEntries,
+  ...commerceEntries,
+  ...sectionsEntries,
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export const CATEGORIES: { id: Category; label: string }[] = [
@@ -40,6 +44,8 @@ export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "effects", label: "Effects" },
   { id: "forms", label: "Forms" },
   { id: "testimonials", label: "Testimonials" },
+  { id: "commerce", label: "Commerce" },
+  { id: "sections", label: "Page Sections" },
 ];
 
 export function bySlug(slug: string): RegistryEntry | undefined {

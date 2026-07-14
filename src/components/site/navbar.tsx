@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site";
+import { LumeniteMark } from "@/components/brand/logo";
 
 const LINKS = [
   { href: "/components", label: "Components" },
@@ -21,10 +22,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-line/70 bg-void/70 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-glow shadow-[0_0_20px_rgba(124,108,255,0.5)]">
-            <Sparkles className="h-4 w-4 text-white" />
-          </span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <LumeniteMark size={30} className="drop-shadow-[0_0_12px_rgba(124,108,255,0.45)]" />
           <span className="text-[15px] font-semibold tracking-tight">
             {SITE.shortName}
             <span className="text-brand-soft"> UI</span>
