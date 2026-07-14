@@ -2,15 +2,15 @@
 
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, Sparkles, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function SplitHero({
-  eyebrow = "Research-grade",
-  headline = "Precision peptides, built for the lab.",
-  subhead = "Third-party tested, cold-chain shipped, and formulated for consistency batch after batch.",
-  primaryCta = "Shop the line",
-  secondaryCta = "View lab results",
+  eyebrow = "New",
+  headline = "Ship interfaces people remember.",
+  subhead = "A component system that turns a plain page into something considered. Copy, paste, and launch in an afternoon.",
+  primaryCta = "Get started",
+  secondaryCta = "See components",
   className,
 }: {
   eyebrow?: string;
@@ -23,8 +23,14 @@ export function SplitHero({
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-40, 40], [8, -8]), { stiffness: 150, damping: 20 });
-  const ry = useSpring(useTransform(mx, [-40, 40], [-8, 8]), { stiffness: 150, damping: 20 });
+  const rx = useSpring(useTransform(my, [-60, 60], [10, -10]), {
+    stiffness: 150,
+    damping: 18,
+  });
+  const ry = useSpring(useTransform(mx, [-60, 60], [-12, 12]), {
+    stiffness: 150,
+    damping: 18,
+  });
 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();
@@ -42,43 +48,47 @@ export function SplitHero({
         my.set(0);
       }}
       className={cn(
-        "grid h-full w-full grid-cols-2 items-center gap-6 rounded-2xl border border-line bg-panel px-8 py-6",
+        "relative grid h-full w-full grid-cols-1 items-center gap-6 overflow-hidden rounded-2xl border border-line bg-panel px-8 py-6 sm:grid-cols-[1.1fr_1fr]",
         className
       )}
     >
-      <div>
+      {/* ambient glow */}
+      <div className="pointer-events-none absolute -right-10 top-0 h-64 w-64 rounded-full bg-brand/20 blur-[90px]" />
+
+      {/* left: copy */}
+      <div className="relative z-10">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-1.5 rounded-full border border-line bg-void px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-brand-soft"
         >
-          <ShieldCheck className="h-3 w-3" />
+          <Sparkles className="h-3 w-3" />
           {eyebrow}
         </motion.span>
         <motion.h1
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.08 }}
-          className="mt-3 text-3xl font-semibold leading-[1.1] text-white"
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-3 text-3xl font-semibold leading-[1.08] tracking-tight text-white"
         >
           {headline}
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.16 }}
-          className="mt-3 max-w-xs text-sm leading-relaxed text-zinc-400"
+          transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-3 max-w-sm text-sm leading-relaxed text-zinc-400"
         >
           {subhead}
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.24 }}
-          className="mt-5 flex items-center gap-3"
+          transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 flex items-center gap-3"
         >
-          <button className="group flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-brand/90">
+          <button className="group flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black transition hover:bg-zinc-200">
             {primaryCta}
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </button>
@@ -88,23 +98,70 @@ export function SplitHero({
         </motion.div>
       </div>
 
-      <motion.div
-        style={{ rotateX: rx, rotateY: ry, transformPerspective: 600 }}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="relative flex h-52 items-center justify-center"
-      >
-        <div className="absolute h-40 w-40 rounded-full bg-brand/30 blur-3xl" />
-        <div className="relative flex h-36 w-20 flex-col items-center">
-          <div className="h-5 w-8 rounded-t-sm bg-gradient-to-b from-zinc-200 to-zinc-400" />
-          <div className="h-1.5 w-10 rounded-full bg-zinc-500" />
-          <div className="relative h-28 w-20 flex-1 rounded-b-xl rounded-t-sm border border-white/20 bg-gradient-to-b from-brand/80 via-brand/50 to-brand-soft/70 shadow-[0_0_40px_rgba(91,140,255,0.4)]">
-            <div className="absolute inset-x-1.5 top-3 h-10 rounded-sm bg-white/15 backdrop-blur-sm" />
-            <div className="absolute inset-x-1.5 bottom-3 h-1 rounded-full bg-white/30" />
+      {/* right: floating product card with mouse-tilt */}
+      <div className="relative z-10 hidden h-full items-center justify-center [perspective:1000px] sm:flex">
+        <motion.div
+          style={{ rotateX: rx, rotateY: ry }}
+          initial={{ opacity: 0, y: 20, scale: 0.94 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-[240px] rounded-2xl border border-white/10 bg-gradient-to-b from-surface to-void p-4 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]"
+        >
+          {/* header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-brand to-glow" />
+              <div className="h-2 w-16 rounded-full bg-white/15" />
+            </div>
+            <div className="flex gap-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
+            </div>
           </div>
-        </div>
-      </motion.div>
+
+          {/* stat */}
+          <div className="mt-4 flex items-end justify-between">
+            <div>
+              <div className="text-lg font-semibold tracking-tight text-white">
+                $128,420
+              </div>
+              <div className="mt-0.5 flex items-center gap-1 text-[10px] text-emerald-400">
+                <TrendingUp className="h-3 w-3" /> +18.2%
+              </div>
+            </div>
+          </div>
+
+          {/* mini bar chart */}
+          <div className="mt-4 flex h-16 items-end gap-1.5">
+            {[38, 55, 42, 70, 60, 88, 74].map((h, i) => (
+              <motion.div
+                key={i}
+                initial={{ height: 0 }}
+                animate={{ height: `${h}%` }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.3 + i * 0.06,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="flex-1 rounded-t bg-gradient-to-t from-brand/40 to-brand-soft"
+              />
+            ))}
+          </div>
+
+          {/* rows */}
+          <div className="mt-4 space-y-2">
+            {[70, 45].map((w, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="h-4 w-4 rounded-full bg-white/10" />
+                <span
+                  className="h-1.5 rounded-full bg-white/12"
+                  style={{ width: `${w}%` }}
+                />
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }

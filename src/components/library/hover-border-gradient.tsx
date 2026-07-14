@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export function HoverBorderGradient({
@@ -14,24 +15,29 @@ export function HoverBorderGradient({
   return (
     <div
       className={cn(
-        "group relative rounded-2xl p-[1.5px]",
+        "group relative overflow-hidden rounded-2xl p-[1.5px]",
         containerClassName
       )}
-      style={{
-        background:
-          "conic-gradient(from 0deg, transparent, transparent)",
-      }}
     >
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 animate-spin-slow"
+      {/* faint static ring so the border reads even before the arc arrives */}
+      <div className="absolute inset-0 rounded-2xl border border-white/10" />
+
+      {/* oversized rotating conic gradient — clipped to the rounded rect by
+          overflow-hidden, so the border light never pokes at the corners.
+          Always visible, brighter on hover. */}
+      <motion.div
+        className="absolute -inset-1/3 opacity-70 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background:
-            "conic-gradient(from 0deg, #7c6cff, #5b8cff, transparent 40%, transparent 60%, #7c6cff)",
+            "conic-gradient(from 0deg, transparent 0deg, rgba(124,108,255,0.15) 30deg, #7c6cff 70deg, #5b8cff 110deg, rgba(91,140,255,0.15) 150deg, transparent 200deg, transparent 360deg)",
         }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
       />
+
       <div
         className={cn(
-          "relative rounded-2xl border border-line bg-panel p-8",
+          "relative rounded-[calc(1rem-1.5px)] bg-panel p-8 transition-shadow duration-500 group-hover:shadow-[0_0_40px_-8px_rgba(124,108,255,0.5)]",
           className
         )}
       >
@@ -44,20 +50,16 @@ export function HoverBorderGradient({
 export default function Demo() {
   return (
     <div className="flex h-full w-full items-center justify-center p-6">
-      <style>{`
-        @keyframes spin-slow-kf { to { transform: rotate(360deg); } }
-        .animate-spin-slow { animation: spin-slow-kf 3s linear infinite; }
-      `}</style>
       <HoverBorderGradient containerClassName="max-w-sm">
-        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/15 text-brand-soft">
+        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand/15 text-brand-soft">
           ⟡
         </div>
         <h3 className="text-lg font-semibold text-white">
-          A border that spins to life
+          A living gradient border
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-          Hover to reveal an animated conic gradient tracing the card&apos;s
-          edge, then fade it back to rest.
+          A soft arc of light traces the card&apos;s edge on a loop, then
+          brightens and glows when you hover.
         </p>
       </HoverBorderGradient>
     </div>
