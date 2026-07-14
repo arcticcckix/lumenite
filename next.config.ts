@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   ...(isGithubPages
     ? {
         output: "export" as const,
+        trailingSlash: true, // emit folder/index.html so /page/ URLs work on Pages
         basePath: `/${repo}`,
         assetPrefix: `/${repo}/`,
         images: { unoptimized: true },
