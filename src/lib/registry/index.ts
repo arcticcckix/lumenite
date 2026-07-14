@@ -11,6 +11,7 @@ import { sectionsEntries } from "./sections";
 import { signatureAEntries } from "./signatureA";
 import { signatureBEntries } from "./signatureB";
 import { signatureCEntries } from "./signatureC";
+import { controlsEntries } from "./controls";
 import { glassEntries } from "./glass";
 
 const baseEntries: RegistryEntry[] = [
@@ -38,6 +39,7 @@ export const REGISTRY: RegistryEntry[] = [
   ...signatureAEntries,
   ...signatureBEntries,
   ...signatureCEntries,
+  ...controlsEntries,
   ...glassEntries,
 ].sort((a, b) => a.name.localeCompare(b.name));
 
