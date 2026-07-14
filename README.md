@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lumenite UI
 
-## Getting Started
+**Beautiful animated components. Copy, paste, ship.**
 
-First, run the development server:
+An Aceternity-style component library business: 56 production-ready React components (Tailwind CSS v4 + Framer Motion), a multi-page marketing site, and a Whop-gated Pro dashboard — all in one Next.js 16 app.
+
+## What's inside
+
+- **`/`** — animated landing page (live component wall, features, pricing teaser, FAQ)
+- **`/components`** — full gallery with search + category/tier filters; every preview is live
+- **`/components/[slug]`** — preview + copy-paste source; Pro components show a blurred paywall until licensed
+- **`/pricing`** — Free / Pro $79 one-time / Team $149 (undercuts Aceternity's $199+)
+- **`/templates`** — Pro template showcase
+- **`/docs`** — getting started, `cn()` helper, theming
+- **`/dashboard`** — license activation (Whop key) → unlocks all Pro source in-browser
+- **`/legal/*`** — Terms, Privacy, License, Refund policy
+- **`/api/license`** — server-side Whop license validation (needs `WHOP_API_KEY`)
+
+## Business model
+
+1. Free components are public — SEO/traffic magnet.
+2. Checkout runs on **Whop** (merchant of record — taxes, receipts, refunds handled).
+3. Buyer gets a license key instantly → activates it in `/dashboard` → Pro source unlocks.
+
+## Deployments
+
+| Target | What | How |
+|---|---|---|
+| **GitHub Pages** | Static showcase (demo-mode dashboard, key `DEMO-2026`) | auto on push to `main` via `.github/workflows/deploy.yml` |
+| **Vercel** | Full app with real Whop validation | import repo → set `WHOP_API_KEY` env var → deploy |
+
+## Going live checklist
+
+1. Create the Whop product (Pro $79, Team $149) and set its checkout URL in `src/lib/site.ts` (`whopCheckoutUrl`).
+2. Deploy to Vercel, add `WHOP_API_KEY` (Whop dashboard → Developer → API keys).
+3. Point a domain, update `SITE.url`.
+4. Run ads. Everything else is automated.
+
+## Dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # extracts component sources, starts Next dev
+npm run build      # production build
+npm run build:pages  # static export for GitHub Pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Component conventions for adding more: `docs/COMPONENT_CONVENTIONS.md`.
