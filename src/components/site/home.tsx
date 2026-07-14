@@ -22,21 +22,42 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* backdrop: subtle grid with radial mask, one faint glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-[-30%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-brand/10 blur-[180px]" />
+      {/* backdrop: grid + Aceternity-style spotlight beams */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-[0.4]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
             maskImage:
-              "radial-gradient(ellipse 75% 55% at 50% 0%, black 35%, transparent 100%)",
+              "radial-gradient(ellipse 75% 60% at 50% 0%, black 30%, transparent 100%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 75% 55% at 50% 0%, black 35%, transparent 100%)",
+              "radial-gradient(ellipse 75% 60% at 50% 0%, black 30%, transparent 100%)",
           }}
         />
+        {/* angled spotlight beams */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, ease: "easeOut" }}
+          className="absolute -left-[10%] -top-[30%] h-[48rem] w-[34rem] -rotate-[28deg] blur-[70px]"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(139,92,246,0.28), transparent 62%)",
+          }}
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
+          className="absolute -right-[6%] -top-[24%] h-[42rem] w-[28rem] rotate-[22deg] blur-[80px]"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(91,140,255,0.2), transparent 62%)",
+          }}
+        />
+        <div className="absolute left-1/2 top-[-24%] h-[26rem] w-[46rem] -translate-x-1/2 rounded-full bg-brand/10 blur-[140px]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6 pb-24 pt-32 text-center sm:pt-40">
@@ -47,7 +68,9 @@ export function Hero() {
           className="mx-auto max-w-4xl text-balance text-5xl font-semibold leading-[1.04] tracking-tight sm:text-7xl"
         >
           Beautiful components.
-          <span className="block text-zinc-500">Copy, paste, ship.</span>
+          <span className="block bg-gradient-to-br from-brand-soft via-white to-glow bg-clip-text text-transparent">
+            Copy, paste, ship.
+          </span>
         </motion.h1>
 
         <motion.p

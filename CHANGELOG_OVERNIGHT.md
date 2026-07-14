@@ -66,3 +66,4 @@ Autonomous session, night of 2026-07-14. Live: https://arcticcckix.github.io/lum
 - Published favicon (app/icon.svg, our pinwheel star mark, replaces default Next favicon) + refined the LumeniteMark logo (bolder curved shuriken blades, stronger gradient).
 - Logo now spins slowly like a star (motion-safe, speeds up on hover) + favicon changed to the bare mark (no tile) to match the site logo exactly.
 - Replaced the recreated mark with the real supplied logo (public/mark.png): favicon (recolored violet via SVG filter) + navbar/footer (CSS-mask, violet gradient, still spins). Uses the actual file, not a recreation.
+- Logo spin is now a one-time quick spin-in on load (0.7s, respects reduced-motion) instead of continuous.
