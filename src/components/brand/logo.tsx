@@ -1,9 +1,11 @@
-import { useId } from "react";
 import { cn } from "@/lib/utils";
 
+const MARK_SRC = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/mark.png`;
+
 /**
- * Lumenite mark — a curved 4-point pinwheel star (matches the brand logo art).
- * `variant` controls the fill: gradient (default), white, or black.
+ * Lumenite mark — the brand shuriken star. Renders the real logo art
+ * (public/mark.png) as a CSS mask so it can be recolored for the dark theme
+ * and spun, while staying pixel-true to the supplied logo.
  */
 export function LumeniteMark({
   size = 32,
@@ -17,45 +19,35 @@ export function LumeniteMark({
   spin?: boolean;
   className?: string;
 }) {
-  const id = useId();
   const fill =
     variant === "white"
       ? "#ffffff"
       : variant === "black"
         ? "#050508"
-        : `url(#lm-${id})`;
+        : "linear-gradient(135deg, #b9a5ff 0%, #8b5cf6 55%, #7c3aed 100%)";
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
+    <span
+      aria-hidden
       className={cn(
+        "inline-block shrink-0",
         spin && "motion-safe:animate-spin-slow [transform-origin:50%_50%]",
         className
       )}
-      aria-hidden
-    >
-      {variant === "gradient" && (
-        <defs>
-          <linearGradient id={`lm-${id}`} x1="14" y1="10" x2="86" y2="90">
-            <stop offset="0%" stopColor="#c8bcff" />
-            <stop offset="50%" stopColor="#7c6cff" />
-            <stop offset="100%" stopColor="#4f83ff" />
-          </linearGradient>
-        </defs>
-      )}
-      {/* One curved blade, rotated 4× around the centre, a pinwheel shuriken. */}
-      {[0, 90, 180, 270].map((deg) => (
-        <path
-          key={deg}
-          fill={fill}
-          transform={`rotate(${deg} 50 50)`}
-          d="M50 50 C 51 33 57 15 68 5 C 63 22 59 39 55 49 C 53 50 51 50 50 50 Z"
-        />
-      ))}
-    </svg>
+      style={{
+        width: size,
+        height: size,
+        background: fill,
+        WebkitMaskImage: `url("${MARK_SRC}")`,
+        maskImage: `url("${MARK_SRC}")`,
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+      }}
+    />
   );
 }
 
