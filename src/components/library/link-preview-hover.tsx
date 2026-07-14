@@ -210,13 +210,13 @@ export default function Demo() {
   return (
     <div className="relative flex h-full w-full items-center justify-center bg-void px-8">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-3xl" />
-      <p className="relative max-w-md text-center text-[15px] leading-9 text-zinc-300">
+      <div className="relative max-w-md text-center text-[15px] leading-9 text-zinc-300">
         Lumenite ships a growing set of motion primitives for React. Browse the{" "}
         <LinkPreviewHover {...DEMO_LINKS[0]} {...bind(0)} />, compose your
         interactions with the <LinkPreviewHover {...DEMO_LINKS[1]} {...bind(1)} />
         , or follow every release in the{" "}
         <LinkPreviewHover {...DEMO_LINKS[2]} {...bind(2)} />.
-      </p>
+      </div>
     </div>
   );
 }
