@@ -63,3 +63,4 @@ Autonomous session, night of 2026-07-14. Live: https://arcticcckix.github.io/lum
 - Cycle (~11:10): +8 components (activity-heatmap, status-timeline, tree-view, phone-input, banner-alert, split-button, tabs-vertical, metric-card-group) → **174 total**. Verified activity-heatmap; gallery clean.
 - Cycle (~11:49, QA): product-quickview now auto-opens the modal on a loop (demonstrates the feature at rest) + neutralized specs copy. Spot-checked sticky-scroll-reveal (good).
 - Templates are now viewable as full live examples (routes /templates/nova|pulse|orbit|signal, composed from library components) + wired batch 11 (git-graph, cursor-presence, toast-promise, otp-keypad, currency-input, avatar-picker, feature-spotlight, live-visitor-count) → **182 components**.
+- Published favicon (app/icon.svg, our pinwheel star mark, replaces default Next favicon) + refined the LumeniteMark logo (bolder curved shuriken blades, stronger gradient).

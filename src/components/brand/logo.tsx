@@ -33,20 +33,20 @@ export function LumeniteMark({
     >
       {variant === "gradient" && (
         <defs>
-          <linearGradient id={`lm-${id}`} x1="10" y1="10" x2="90" y2="90">
-            <stop offset="0%" stopColor="#a99dff" />
+          <linearGradient id={`lm-${id}`} x1="14" y1="10" x2="86" y2="90">
+            <stop offset="0%" stopColor="#c8bcff" />
             <stop offset="50%" stopColor="#7c6cff" />
-            <stop offset="100%" stopColor="#5b8cff" />
+            <stop offset="100%" stopColor="#4f83ff" />
           </linearGradient>
         </defs>
       )}
-      {/* One curved blade, rotated 4× around the centre — a pinwheel shuriken. */}
+      {/* One curved blade, rotated 4× around the centre, a pinwheel shuriken. */}
       {[0, 90, 180, 270].map((deg) => (
         <path
           key={deg}
           fill={fill}
           transform={`rotate(${deg} 50 50)`}
-          d="M50 50 C 52 34 55 20 47 6 C 62 18 70 30 66 44 C 60 47 53 48 50 50 Z"
+          d="M50 50 C 51 33 57 15 68 5 C 63 22 59 39 55 49 C 53 50 51 50 50 50 Z"
         />
       ))}
     </svg>
