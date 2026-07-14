@@ -448,7 +448,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.06 }}
-            className="mt-6 text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl"
+            className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl"
           >
             Ava Reed
           </motion.h1>

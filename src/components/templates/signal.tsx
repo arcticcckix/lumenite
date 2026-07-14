@@ -270,7 +270,7 @@ export default function SignalTemplate() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
-            className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl"
+            className="mt-6 text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl"
           >
             Know the exact moment
             <br className="hidden sm:block" /> an account is ready to buy.

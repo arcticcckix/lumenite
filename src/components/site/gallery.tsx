@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { REGISTRY } from "@/lib/registry";
+import { REGISTRY, CATEGORIES } from "@/lib/registry";
+import type { Category } from "@/lib/registry/types";
 import { cn } from "@/lib/utils";
 
 type Tier = "all" | "free" | "pro";
@@ -16,11 +17,16 @@ const TIERS: { id: Tier; label: string }[] = [
 
 export function Gallery() {
   const [tier, setTier] = useState<Tier>("all");
+  const [cat, setCat] = useState<Category | "all">("all");
 
   const entries = useMemo(
     () =>
-      tier === "all" ? REGISTRY : REGISTRY.filter((e) => e.tier === tier),
-    [tier]
+      REGISTRY.filter(
+        (e) =>
+          (tier === "all" || e.tier === tier) &&
+          (cat === "all" || e.category === cat)
+      ),
+    [tier, cat]
   );
 
   return (
@@ -53,7 +59,30 @@ export function Gallery() {
         </div>
       </div>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      {/* mobile-only category filter (desktop uses the sidebar) */}
+      <div className="mt-5 flex gap-2 overflow-x-auto pb-1 no-scrollbar lg:hidden">
+        {(
+          [{ id: "all" as const, label: "All" }, ...CATEGORIES] as {
+            id: Category | "all";
+            label: string;
+          }[]
+        ).map((c) => (
+          <button
+            key={c.id}
+            onClick={() => setCat(c.id)}
+            className={cn(
+              "shrink-0 rounded-full border px-3 py-1.5 text-xs transition",
+              cat === c.id
+                ? "border-brand/50 bg-brand/15 text-white"
+                : "border-line bg-surface text-zinc-400"
+            )}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {entries.map((entry, i) => {
           const Demo = entry.component;
           return (

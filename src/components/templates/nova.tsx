@@ -465,7 +465,7 @@ function Hero() {
             initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.08, ease: EASE }}
-            className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl"
+            className="mt-6 text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl"
           >
             Understand every user,
             <br className="hidden sm:block" />{" "}
