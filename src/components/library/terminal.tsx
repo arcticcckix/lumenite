@@ -20,7 +20,7 @@ const SCRIPT: TermLine[] = [
   { kind: "success", text: "✓ Installed 1 component in 0.8s" },
   { kind: "prompt", text: "npm run build" },
   { kind: "muted", text: "Compiling..." },
-  { kind: "success", text: "✓ Build complete — 0 errors, 0 warnings" },
+  { kind: "success", text: "✓ Build complete, 0 errors, 0 warnings" },
 ];
 
 function colorFor(kind: LineKind) {
@@ -89,7 +89,7 @@ export function Terminal({ className }: { className?: string }) {
         <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
         <span className="h-3 w-3 rounded-full bg-[#28c840]" />
         <span className="ml-2 text-xs font-medium text-zinc-500">
-          zsh — lumenite
+          zsh, lumenite
         </span>
       </div>
       <div className="h-64 space-y-1.5 overflow-hidden p-4 font-mono text-[13px] leading-relaxed">

@@ -7,7 +7,7 @@ export function EditorialHero({
   kicker = "The 2026 collection",
   title = "Formulated for",
   titleItalic = "clarity.",
-  description = "Every batch is documented, tested, and traceable — a research standard built for people who read the certificate before the label.",
+  description = "Every batch is documented, tested, and traceable, a research standard built for people who read the certificate before the label.",
   className,
 }: {
   kicker?: string;

@@ -74,7 +74,7 @@ export function CookieConsent({
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
           className="w-full max-w-sm rounded-full border border-line bg-panel px-4 py-2 text-center text-xs text-zinc-400"
         >
-          {choice === "accepted" ? "Preferences saved — thanks!" : "Only essential cookies enabled."}
+          {choice === "accepted" ? "Preferences saved, thanks!" : "Only essential cookies enabled."}
         </motion.div>
       )}
     </AnimatePresence>

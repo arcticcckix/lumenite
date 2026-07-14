@@ -119,7 +119,7 @@ export function ProductCard({
 export default function Demo() {
   return (
     <div className="flex h-full w-full items-center justify-center bg-[#050508] p-6">
-      <ProductCard name="Lumen Vial — 10ml" price="$68.00" rating={5} />
+      <ProductCard name="Lumen Vial, 10ml" price="$68.00" rating={5} />
     </div>
   );
 }

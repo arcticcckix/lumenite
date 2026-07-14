@@ -22,7 +22,7 @@ export function HoverBorderGradient({
       {/* faint static ring so the border reads even before the arc arrives */}
       <div className="absolute inset-0 rounded-2xl border border-white/10" />
 
-      {/* oversized rotating conic gradient — clipped to the rounded rect by
+      {/* oversized rotating conic gradient, clipped to the rounded rect by
           overflow-hidden, so the border light never pokes at the corners.
           Always visible, brighter on hover. */}
       <motion.div

@@ -117,7 +117,7 @@ const demoItems: FeatureItem[] = [
   {
     icon: Cpu,
     title: "Lightweight runtime",
-    description: "No heavy deps — just framer-motion doing the work.",
+    description: "No heavy deps, just framer-motion doing the work.",
   },
 ];
 

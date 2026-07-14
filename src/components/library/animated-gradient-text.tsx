@@ -44,7 +44,7 @@ export default function Demo() {
         <AnimatedGradientText>Design that flows</AnimatedGradientText>
       </h2>
       <p className="max-w-xs text-sm leading-relaxed text-zinc-400">
-        A slow, continuous gradient sweep — restrained enough for a headline,
+        A slow, continuous gradient sweep, restrained enough for a headline,
         rich enough to notice.
       </p>
     </div>

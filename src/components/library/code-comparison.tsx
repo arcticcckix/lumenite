@@ -83,8 +83,8 @@ function Panel({
 export function CodeComparison({ className }: { className?: string }) {
   return (
     <div className={cn("flex w-full max-w-2xl flex-col gap-3 sm:flex-row", className)}>
-      <Panel filename="card.tsx — before" lines={BEFORE} />
-      <Panel filename="card.tsx — after" lines={AFTER} />
+      <Panel filename="card.tsx, before" lines={BEFORE} />
+      <Panel filename="card.tsx, after" lines={AFTER} />
     </div>
   );
 }

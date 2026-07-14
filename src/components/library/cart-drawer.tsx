@@ -13,8 +13,8 @@ interface CartLine {
 }
 
 const INITIAL_LINES: CartLine[] = [
-  { id: "1", name: "Lumen Vial — 10ml", price: 68 },
-  { id: "2", name: "BAC Water — 3ml", price: 14 },
+  { id: "1", name: "Lumen Vial, 10ml", price: 68 },
+  { id: "2", name: "BAC Water, 3ml", price: 14 },
   { id: "3", name: "Sterile Vial Kit", price: 22 },
 ].map((l) => ({ ...l, qty: 1 }));
 

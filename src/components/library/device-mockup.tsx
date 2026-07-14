@@ -73,7 +73,7 @@ export function BrowserMockup({
         </div>
 
         <div className="space-y-2">
-          {["Praetorian order #4821", "New subscriber — Halo tier", "Payout processed"].map(
+          {["Praetorian order #4821", "New subscriber, Halo tier", "Payout processed"].map(
             (row, i) => (
               <div
                 key={row}

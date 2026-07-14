@@ -15,7 +15,7 @@ interface QuickProduct {
 
 const PRODUCT: QuickProduct = {
   id: "lumen-vial",
-  name: "Lumen Vial — 10ml",
+  name: "Lumen Vial, 10ml",
   price: "$68.00",
   rating: 5,
   specs: [

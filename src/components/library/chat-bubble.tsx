@@ -13,7 +13,7 @@ interface CannedMessage {
 const SCRIPT: CannedMessage[] = [
   { from: "bot", text: "Hey there! How can we help you today?" },
   { from: "user", text: "Does Lumenite support Tailwind v4?" },
-  { from: "bot", text: "Yes — every component ships with v4 tokens out of the box." },
+  { from: "bot", text: "Yes, every component ships with v4 tokens out of the box." },
 ];
 
 function TypingDots() {

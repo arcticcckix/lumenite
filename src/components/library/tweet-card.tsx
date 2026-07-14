@@ -105,7 +105,7 @@ export default function Demo() {
       <TweetCard
         name="Marcus Lin"
         handle="marcuslin"
-        body="Swapped our dashboard cards for Lumenite's — shipped a screenshot-worthy UI in an afternoon. The spotlight card alone got 40k impressions."
+        body="Swapped our dashboard cards for Lumenite's, shipped a screenshot-worthy UI in an afternoon. The spotlight card alone got 40k impressions."
         likes={312}
       />
     </div>

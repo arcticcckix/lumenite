@@ -17,7 +17,7 @@ const POOL: Omit<Item, "id">[] = [
   {
     icon: DollarSign,
     gradient: "from-emerald-500 to-teal-400",
-    title: "New sale — $79.00",
+    title: "New sale, $79.00",
     subtitle: "Recovery Peptide Blend",
   },
   {

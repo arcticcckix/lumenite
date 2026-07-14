@@ -65,7 +65,7 @@ const demoItems: FaqItem[] = [
   {
     question: "Can I use these components in commercial projects?",
     answer:
-      "Yes — every free and pro component ships with a license that covers unlimited commercial projects.",
+      "Yes, every free and pro component ships with a license that covers unlimited commercial projects.",
   },
   {
     question: "Do I need Tailwind v4?",

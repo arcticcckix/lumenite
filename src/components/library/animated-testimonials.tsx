@@ -120,7 +120,7 @@ export function AnimatedTestimonials({
 
 const demoTestimonials: Testimonial[] = [
   {
-    quote: "Lumenite cut our build time in half — every component just works, out of the box.",
+    quote: "Lumenite cut our build time in half, every component just works, out of the box.",
     name: "Ava Chen",
     title: "Product Lead, Northstar",
     gradient: "linear-gradient(135deg, #7c6cff, #5b8cff)",

@@ -10,10 +10,10 @@ import {
 import { cn } from "@/lib/utils";
 
 /**
- * Liquid Glass — an Apple-style translucent glass surface.
+ * Liquid Glass, an Apple-style translucent glass surface.
  * Layers that create the effect:
  *  1. backdrop blur + saturation (the frost)
- *  2. an SVG displacement filter on the backdrop (the refraction / lensing) —
+ *  2. an SVG displacement filter on the backdrop (the refraction / lensing),
  *     progressive enhancement; browsers without it just show the frost
  *  3. inset specular edges (bright top rim, faint full ring)
  *  4. a cursor-tracked highlight that slides across the surface

@@ -63,7 +63,7 @@ const sample: Testimonial[] = [
     title: "Design Lead, Vantage",
   },
   {
-    quote: "The polish is unreal — clients think we hired a studio.",
+    quote: "The polish is unreal, clients think we hired a studio.",
     name: "Theo Brandt",
     title: "Founder, Northbeam",
   },

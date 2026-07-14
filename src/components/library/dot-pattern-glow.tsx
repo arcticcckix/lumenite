@@ -83,7 +83,7 @@ export default function Demo() {
         Dot Pattern Glow
       </h3>
       <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-zinc-400">
-        Move your cursor across the field — a soft light warms the dots
+        Move your cursor across the field, a soft light warms the dots
         beneath it.
       </p>
     </DotPatternGlow>

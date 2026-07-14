@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 const DEFAULT_OFFERS = [
   "Free shipping on orders over $75",
   "New: subscribe & save 15% every month",
-  "Limited batch — Lumen Vial restocked today",
+  "Limited batch, Lumen Vial restocked today",
 ];
 
 export function PromoBar({
