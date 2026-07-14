@@ -31,7 +31,7 @@ export function LumeniteMark({
       aria-hidden
       className={cn(
         "inline-block shrink-0",
-        spin && "motion-safe:animate-spin-slow [transform-origin:50%_50%]",
+        spin && "mark-spin-in [transform-origin:50%_50%]",
         className
       )}
       style={{

@@ -65,3 +65,4 @@ Autonomous session, night of 2026-07-14. Live: https://arcticcckix.github.io/lum
 - Templates are now viewable as full live examples (routes /templates/nova|pulse|orbit|signal, composed from library components) + wired batch 11 (git-graph, cursor-presence, toast-promise, otp-keypad, currency-input, avatar-picker, feature-spotlight, live-visitor-count) → **182 components**.
 - Published favicon (app/icon.svg, our pinwheel star mark, replaces default Next favicon) + refined the LumeniteMark logo (bolder curved shuriken blades, stronger gradient).
 - Logo now spins slowly like a star (motion-safe, speeds up on hover) + favicon changed to the bare mark (no tile) to match the site logo exactly.
+- Replaced the recreated mark with the real supplied logo (public/mark.png): favicon (recolored violet via SVG filter) + navbar/footer (CSS-mask, violet gradient, still spins). Uses the actual file, not a recreation.

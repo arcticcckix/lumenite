@@ -47,7 +47,7 @@ export function Navbar() {
           <LumeniteMark
             size={28}
             spin
-            className="drop-shadow-[0_0_12px_rgba(124,108,255,0.45)] transition-[filter] group-hover:[animation-duration:1.6s] group-hover:drop-shadow-[0_0_16px_rgba(124,108,255,0.7)]"
+            className="drop-shadow-[0_0_12px_rgba(124,108,255,0.45)] transition-[filter] group-hover:drop-shadow-[0_0_16px_rgba(124,108,255,0.7)]"
           />
           <span className="text-[15px] font-semibold tracking-tight">
             {SITE.shortName}

@@ -15,7 +15,6 @@
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
   --animate-aurora: aurora 60s linear infinite;
-  --animate-spin-slow: spin 9s linear infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -56,3 +55,15 @@ body {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* One-time quick spin for the brand mark on mount. */
+@keyframes mark-spin {
+  from { transform: rotate(-300deg); opacity: 0.35; }
+  to { transform: rotate(0deg); opacity: 1; }
+}
+.mark-spin-in {
+  animation: mark-spin 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mark-spin-in { animation: none; }
+}
