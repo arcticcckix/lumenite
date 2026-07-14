@@ -8,6 +8,9 @@ import { heroesEntries } from "./heroes";
 import { gridsEntries } from "./grids";
 import { commerceEntries } from "./commerce";
 import { sectionsEntries } from "./sections";
+import { signatureAEntries } from "./signatureA";
+import { signatureBEntries } from "./signatureB";
+import { glassEntries } from "./glass";
 
 const baseEntries: RegistryEntry[] = [
   {
@@ -31,6 +34,9 @@ export const REGISTRY: RegistryEntry[] = [
   ...gridsEntries,
   ...commerceEntries,
   ...sectionsEntries,
+  ...signatureAEntries,
+  ...signatureBEntries,
+  ...glassEntries,
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export const CATEGORIES: { id: Category; label: string }[] = [
@@ -46,6 +52,7 @@ export const CATEGORIES: { id: Category; label: string }[] = [
   { id: "testimonials", label: "Testimonials" },
   { id: "commerce", label: "Commerce" },
   { id: "sections", label: "Page Sections" },
+  { id: "glass", label: "Liquid Glass" },
 ];
 
 export function bySlug(slug: string): RegistryEntry | undefined {

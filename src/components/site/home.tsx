@@ -6,6 +6,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { REGISTRY, CATEGORIES } from "@/lib/registry";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { LiquidGlass } from "@/components/library/liquid-glass-card";
 
 /* ---------------- Hero ---------------- */
 
@@ -234,6 +235,103 @@ export function Features() {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Liquid Glass showcase ---------------- */
+
+export function GlassShowcase() {
+  return (
+    <section className="border-t border-line">
+      <div className="mx-auto max-w-7xl px-6 py-28">
+        <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="max-w-xl">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
+              Now with Liquid Glass.
+            </h2>
+            <p className="mt-4 text-zinc-400">
+              Apple&apos;s translucent material, done properly: real backdrop
+              refraction, a specular edge, and a highlight that tracks the
+              cursor. The bar at the top of this page uses it too.
+            </p>
+          </div>
+          <Link
+            href="/components"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line px-6 py-2.5 text-sm text-zinc-300 transition hover:border-zinc-600 hover:text-white"
+          >
+            Explore the glass set
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        {/* vivid backdrop so the translucency and refraction are obvious */}
+        <div className="relative overflow-hidden rounded-3xl border border-line">
+          <div className="absolute inset-0">
+            <div className="absolute -left-16 top-0 h-72 w-72 rounded-full bg-[#ff5f8f] blur-[90px]" />
+            <div className="absolute right-10 top-4 h-72 w-72 rounded-full bg-[#7c6cff] blur-[90px]" />
+            <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[#22d3ee] blur-[100px]" />
+            <div className="absolute bottom-6 right-1/4 h-56 w-56 rounded-full bg-[#f5c451] blur-[90px]" />
+            <div
+              className="absolute inset-0 opacity-[0.12]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+                backgroundSize: "44px 44px",
+              }}
+            />
+          </div>
+
+          <div className="relative flex min-h-[420px] flex-wrap items-center justify-center gap-6 p-10">
+            <LiquidGlass className="w-[320px] p-7">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-lg">
+                  ✦
+                </div>
+                <div>
+                  <div className="text-[15px] font-semibold text-white">
+                    Liquid Glass Card
+                  </div>
+                  <div className="text-xs text-white/70">Move your cursor</div>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-white/85">
+                A frosted panel that bends the color behind it, catches light on
+                its edge, and follows your pointer with a soft highlight.
+              </p>
+              <div className="mt-5 flex gap-2">
+                <button className="rounded-full bg-white/90 px-4 py-1.5 text-xs font-medium text-black transition hover:bg-white">
+                  Copy code
+                </button>
+                <button className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white ring-1 ring-inset ring-white/20 transition hover:bg-white/20">
+                  Preview
+                </button>
+              </div>
+            </LiquidGlass>
+
+            <LiquidGlass className="w-[220px] p-6" refraction={false}>
+              <div className="text-4xl font-semibold tracking-tight text-white">
+                4
+              </div>
+              <div className="mt-1 text-xs text-white/70">glass components</div>
+              <div className="mt-5 space-y-2 text-sm text-white/85">
+                <div className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5" /> Card
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5" /> Button
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5" /> Dock
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5" /> Nav
+                </div>
+              </div>
+            </LiquidGlass>
+          </div>
         </div>
       </div>
     </section>

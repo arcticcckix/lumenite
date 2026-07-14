@@ -14,7 +14,8 @@ export type Category =
   | "forms"
   | "testimonials"
   | "commerce"
-  | "sections";
+  | "sections"
+  | "glass";
 
 export interface RegistryEntry {
   /** URL slug, kebab-case, unique */
