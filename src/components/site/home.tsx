@@ -249,6 +249,69 @@ export function PricingTeaser() {
   );
 }
 
+/* ---------------- Audit teaser ---------------- */
+
+export function AuditTeaser() {
+  return (
+    <section className="border-t border-line bg-surface/50">
+      <div className="mx-auto max-w-5xl px-6 py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <div className="mb-4 flex w-fit items-center gap-2 rounded-full border border-line bg-panel/60 px-3 py-1 text-xs text-brand-soft">
+              <Sparkles className="h-3.5 w-3.5" /> New · AI Site Audit
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Not sure where to start? Let our AI look at your site.
+            </h2>
+            <p className="mt-4 text-zinc-400">
+              Paste your URL and Lumenite scans every section — hero, nav,
+              testimonials, pricing — scores your design, and hands you the exact
+              components to upgrade each one. Free, no signup.
+            </p>
+            <Link
+              href="/audit"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-zinc-200"
+            >
+              Audit my site free <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="rounded-2xl border border-line bg-void p-6">
+            <div className="flex items-center gap-3">
+              <div className="relative h-16 w-16 shrink-0">
+                <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="#1c1c28" strokeWidth="12" />
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="#a99dff" strokeWidth="12" strokeLinecap="round" strokeDasharray={2 * Math.PI * 52} strokeDashoffset={2 * Math.PI * 52 * 0.38} />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">62</div>
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-wide text-zinc-500">Design score</div>
+                <div className="text-sm text-zinc-300">6 quick wins found</div>
+              </div>
+            </div>
+            <div className="mt-5 space-y-2">
+              {[
+                { l: "Hero section", ok: false },
+                { l: "Testimonials", ok: false },
+                { l: "Navigation", ok: true },
+                { l: "Pricing", ok: true },
+              ].map((r) => (
+                <div key={r.l} className="flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-sm">
+                  <span className={r.ok ? "text-emerald-400" : "text-amber-400"}>
+                    {r.ok ? <Check className="h-3.5 w-3.5" /> : "!"}
+                  </span>
+                  <span className="text-zinc-300">{r.l}</span>
+                  {!r.ok && <span className="ml-auto text-xs text-brand-soft">upgrade →</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- FAQ ---------------- */
 
 const FAQS = [

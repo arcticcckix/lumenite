@@ -1,4 +1,4 @@
-import { Hero, ComponentWall, Features, PricingTeaser, FAQ } from "@/components/site/home";
+import { Hero, ComponentWall, Features, AuditTeaser, PricingTeaser, FAQ } from "@/components/site/home";
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <Hero />
       <ComponentWall />
       <Features />
+      <AuditTeaser />
       <PricingTeaser />
       <FAQ />
     </>

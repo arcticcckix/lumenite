@@ -11,6 +11,7 @@ import { LumeniteMark } from "@/components/brand/logo";
 const LINKS = [
   { href: "/components", label: "Components" },
   { href: "/templates", label: "Templates" },
+  { href: "/audit", label: "Free Audit" },
   { href: "/pricing", label: "Pricing" },
   { href: "/docs", label: "Docs" },
 ];
